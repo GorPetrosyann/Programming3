@@ -45,7 +45,7 @@ class EaterBomb{
             this.energy ++;
             // if(this.energy === 2){
                 for(let i = 0;i < 1; i++){
-                    matrix[newy][newx] = 2
+                    matrix[newy][newx] = 3
                     Eater.push(new GrassEater(newx,newy))
                 }
             // }

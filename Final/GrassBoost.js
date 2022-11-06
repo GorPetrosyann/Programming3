@@ -40,7 +40,7 @@ class GrassBoost{
             this.energy ++;
            
                 for(let i = 0;i < 1; i++){
-                    matrix[newy][newx] = 2
+                    matrix[newy][newx] = 4
                     Xot.push(new Grass(newx,newy))
                 }
         }else{
