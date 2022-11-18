@@ -2,7 +2,7 @@ class GrassBoost{
     constructor(x,y){
         this.x = x;
         this.y = y;
-        this.energy = 5;
+        this.energy = 3;
     }
     newDir() {
         this.directions = [
