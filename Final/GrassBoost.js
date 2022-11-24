@@ -1,4 +1,6 @@
-class GrassBoost extends LivingCreature{
+const LivingCreature = require("./LivingCreature")
+const Grass = require("./Grass")
+module.exports = class GrassBoost extends LivingCreature{
     constructor(x,y){
         super(x,y);
         this.energy = 3;

@@ -63,8 +63,8 @@
 
 
 // }
-
-class GrassEater extends LivingCreature {
+const LivingCreature = require("./LivingCreature")
+module.exports = class GrassEater extends LivingCreature {
     constructor(x, y, index){
         super(x, y, index);
         this.energy = 8;
@@ -85,8 +85,13 @@ class GrassEater extends LivingCreature {
        this.getNewCoordinates();
        return super.chooseCell(character);
    }
+   random(ch){
+    let found = this.chooseCell(ch);
+    let result = Math.floor(Math.random()*found.length)
+    return found[result];
+}
    move() {
-    let cord = random(this.chooseCell(0));
+    let cord = this.random(0);
     if (cord) {
         let x = cord[0];
         let y = cord[1];
@@ -98,8 +103,8 @@ class GrassEater extends LivingCreature {
 }
 
 eat() {   
-    let cord = random( this.chooseCell(1));
-    let cord1 = random (this.chooseCell(4));
+    let cord = this.random(1);
+    let cord1 = this.random (4);
     if (cord) {
         let x = cord[0];
         let y = cord[1];
@@ -150,7 +155,7 @@ eat() {
 }
 
 mul() {
-    let cord = random(this.chooseCell(0));
+    let cord = this.random(0);
 
     if (cord) {
         let x = cord[0];
