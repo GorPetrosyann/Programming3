@@ -1,9 +1,9 @@
 let side = 25;
-let fr = 300;
+let fr = 5000;
 let Xot = [];
 let Eater = [];
 let eaterbomb = [];
-let GBE = [];
+let Gbeat = [];
 let grassboost = [];
 let matrix = [];
 
@@ -30,8 +30,9 @@ function objectsCreate() {
           eaterbomb.push(new EaterBomb(x,y));
         }else if(matrix[y][x] == 4){
           grassboost.push(new GrassBoost(x,y));
-        }else if(matrix[y][x] == 5){
-          GBE.push(new GBEater(x,y));
+        }
+        else if(matrix[y][x] == 5){
+          Gbeat.push(new GBEater(x,y));
         }
       }
     }
@@ -58,8 +59,9 @@ function draw(){
              fill ("blue")
            }else if(matrix[y][x] == 4){
              fill("purple")
-           }else if (matrix[y][x == 5]){
-              fill("black")
+           }
+           else if (matrix[y][x == 5]){
+              fill("red")
            }
             rect(x * side,y * side, side, side);
         }
@@ -80,7 +82,7 @@ function draw(){
     for (let i = 0; i < grassboost.length; i++) {
       grassboost[i].energy2()
     }
-    for (let i = 0; i < GBE.length; i++) {
-      GBE[i].eat()
+    for (let i = 0; i < Gbeat.length; i++) {
+      Gbeat[i].eat()
     }
   }

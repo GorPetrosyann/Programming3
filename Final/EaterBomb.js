@@ -1,42 +1,41 @@
-class EaterBomb{
+class EaterBomb extends LivingCreature{
     constructor(x,y){
-        this.x = x;
-        this.y = y;
+        super(x,y);
         this.energy = 5;
       
     }    
-    newDir() {
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
-    getDirections(b) {
-        this.newDir()
-        let found = [];
+    // newDir() {
+    //     this.directions = [
+    //         [this.x - 1, this.y - 1],
+    //         [this.x, this.y - 1],
+    //         [this.x + 1, this.y - 1],
+    //         [this.x - 1, this.y],
+    //         [this.x + 1, this.y],
+    //         [this.x - 1, this.y + 1],
+    //         [this.x, this.y + 1],
+    //         [this.x + 1, this.y + 1]
+    //     ];
+    // }
+    // getDirections(b) {
+    //     this.newDir()
+    //     let found = [];
     
-        for (let i = 0; i < this.directions.length; i++) {
-            let x = this.directions[i][0];
-            let y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == b) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
+    //     for (let i = 0; i < this.directions.length; i++) {
+    //         let x = this.directions[i][0];
+    //         let y = this.directions[i][1];
+    //         if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
+    //             if (matrix[y][x] == b) {
+    //                 found.push(this.directions[i]);
+    //             }
+    //         }
+    //     }
+    //     return found;
         
-    }
+    // }
     energy1(){
         // debugger;
         //եթե found-ում առկա է 8 դատարկ վանդակ,այսինքն բոլոր կողմերից ազատ է,ապա իր միջից ծնվում է նոր խոտակեր 
-       let found = this.getDirections(0);//stex petqa ases, vor zronern es pntrum
+       let found = this.chooseCell(0);//stex petqa ases, vor zronern es pntrum
        //որպեսզի նրա վերևում առաջանա նոր խոտակեր
         
         if(found.length === 8){
