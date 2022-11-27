@@ -1,5 +1,5 @@
 let side = 25;
-let fr = 5000;
+// let fr = 5000;
 var socket = io();
 // let Xot = [];
 // let Eater = [];
@@ -43,7 +43,6 @@ function setup() {
   // createCanvas(matrix[0].length * side, matrix.length * side);
   createCanvas(800,800)
   background("red");
-  frameRate(fr)
 }
 
 // objectsCreate()
@@ -55,16 +54,18 @@ function update(matrix){
                 fill("green");
             }else if (matrix[y][x] == 0){
                 fill ("gray")
-           }else if (matrix[y][x] == 2){
+           }
+           else if (matrix[y][x] == 2){
               fill ("yellow")
-           }else if (matrix[y][x] == 3){
-             fill ("blue")
-           }else if(matrix[y][x] == 4){
-             fill("purple")
            }
-           else if (matrix[y][x == 5]){
-              fill("red")
-           }
+            else if (matrix[y][x] == 3){
+              fill ("blue")
+            }else if(matrix[y][x] == 4){
+              fill("purple")
+            }
+            // else if (matrix[y][x == 5]){
+            //     fill("red")
+            // }
             rect(x * side,y * side, side, side);
         }
             

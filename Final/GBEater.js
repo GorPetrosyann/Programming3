@@ -38,7 +38,7 @@ module.exports = class GBEater extends LivingCreature {
 }
 
 eat() {   
-    let cord = this.random( 4);
+    let cord = this.random(4);
     if (cord) {
         let x = cord[0];
         let y = cord[1];

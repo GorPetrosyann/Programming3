@@ -104,7 +104,7 @@ module.exports = class GrassEater extends LivingCreature {
 
 eat() {   
     let cord = this.random(1);
-    let cord1 = this.random (4);
+    let cord1 = this.random(4);
     if (cord) {
         let x = cord[0];
         let y = cord[1];
@@ -119,7 +119,8 @@ eat() {
                 Xot.splice(i, 1);
             }
         }
-         if (this.multiply == 10) {
+         if (this.multiply == 5) {
+             
             this.mul()
             this.multiply = 0;
         }
@@ -156,7 +157,6 @@ eat() {
 
 mul() {
     let cord = this.random(0);
-
     if (cord) {
         let x = cord[0];
         let y = cord[1];
