@@ -10,30 +10,24 @@ app.get('/', function (req, res) {
 
 server.listen(3000);
 
-
+ xx = 2;
  Xot = [];
  Eater = [];
  eaterbomb = [];
- Gbeat = [];
  grassboost = [];
  matrix = [];
  const Grass = require("./Final/Grass")
  const GrassEater = require("./Final/GrassEater")
  const EaterBomb = require("./Final/EaterBomb")
  const GrassBoost = require("./Final/GrassBoost")
-//  const GBEater = require("./Final/GBEater")
 
-// function getRandomInt(min, max) {
-//   min = Math.ceil(min);
-//   max = Math.floor(max);
-//   return Math.floor(Math.random() * (max - min+1) + min); // The maximum is exclusive and the minimum is inclusive
-// }
+ 
 
  function generate(a,b){
    for (let i = 0; i < a; i++) {
        matrix.push([]);
        for (let j = 0; j < b; j++) {
-         matrix[i].push(Math.round(Math.random() * 5));
+         matrix[i].push(Math.round(Math.random() * xx));
        }
    }
    io.sockets.emit("send matrix", matrix)
@@ -56,9 +50,6 @@ function objectsCreate() {
        }else if(matrix[y][x] == 4){
          grassboost.push(new GrassBoost(x,y));
        }
-      //  else if(matrix[y][x] == 5){
-      //    Gbeat.push(new GBEater(x,y));
-      //  }
      }
    }
    io.sockets.emit("send matrix", matrix)
@@ -78,17 +69,14 @@ function game(){
   for (let i = 0; i < grassboost.length; i++) {
     grassboost[i].energy2()
   }
-  // for (let i = 0; i < Gbeat.length; i++) {
-  //   Gbeat[i].eat()
-  // }
   io.sockets.emit("send matrix", matrix)
 
 }
 
-setInterval(game,500)
+setInterval(game,1000)
 
 
 
-io.on('connection', function (socket) {
-   objectsCreate()
-});
+  io.on('connection', function (socket) {
+    objectsCreate()
+  });
