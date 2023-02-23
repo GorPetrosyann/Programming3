@@ -20,7 +20,7 @@ module.exports = class GrassBoost extends LivingCreature{
     // getDirections(b) {
     //     this.newDir()
     //     let found = [];
-    
+
     //     for (let i = 0; i < this.directions.length; i++) {
     //         let x = this.directions[i][0];
     //         let y = this.directions[i][1];
@@ -34,12 +34,12 @@ module.exports = class GrassBoost extends LivingCreature{
     // }
     energy2(){
         let found = this.chooseCell(1);
-        
+
         if(found.length === 2){
             let newy = found[1][1];
             let newx =found[1][0]
             this.energy ++;
-           
+
                 for(let i = 0;i < 1; i++){
                     matrix[newy][newx] = 4
                     Xot.push(new Grass(newx,newy))
@@ -53,7 +53,7 @@ module.exports = class GrassBoost extends LivingCreature{
     }
     die(){
         matrix[this.y][this.x] = 0;
-    
+
         for (let i = 0; i < grassboost.length; i++) {
             if (this.x == grassboost[i].x && this.y == grassboost[i].y) {
                 grassboost.splice(i, 1);

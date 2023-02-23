@@ -37,9 +37,10 @@ module.exports = class GrassEater extends LivingCreature {
     }
 }
 
-    eat() {   
+    eat() {
         let cord = this.random(1);
-        if (cord) {
+        this.energy++;
+        if (this.energy > 2 && cord) {
             let x = cord[0];
             let y = cord[1];
             matrix[y][x] = 2;
@@ -53,16 +54,16 @@ module.exports = class GrassEater extends LivingCreature {
                 Xot.splice(i, 1);
             }
         }
-        if (this.multiply == 5) {
-             
+        if (this.energy == 5) {
+
             this.mul()
-            this.multiply = 0;
-        }   
-    } 
+            this.energy = 0;
+        }
+    }
         else {
             this.move();
             this.energy--;
-        if (this.energy < 3) { 
+        if (this.energy < 3) {
             this.die();
         }
     }

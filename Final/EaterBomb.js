@@ -4,8 +4,8 @@ module.exports=class EaterBomb extends LivingCreature{
     constructor(x,y){
         super(x,y);
         this.energy = 5;
-      
-    }    
+
+    }
     // newDir() {
     //     this.directions = [
     //         [this.x - 1, this.y - 1],
@@ -21,7 +21,7 @@ module.exports=class EaterBomb extends LivingCreature{
     // getDirections(b) {
     //     this.newDir()
     //     let found = [];
-    
+
     //     for (let i = 0; i < this.directions.length; i++) {
     //         let x = this.directions[i][0];
     //         let y = this.directions[i][1];
@@ -32,7 +32,7 @@ module.exports=class EaterBomb extends LivingCreature{
     //         }
     //     }
     //     return found;
-        
+
     // }
      getNewCoordinates() {
        this.directions = [
@@ -48,10 +48,10 @@ module.exports=class EaterBomb extends LivingCreature{
 }
     // energy1(){
     //     // debugger;
-    //     //եթե found-ում առկա է 8 դատարկ վանդակ,այսինքն բոլոր կողմերից ազատ է,ապա իր միջից ծնվում է նոր խոտակեր 
+    //     //եթե found-ում առկա է 8 դատարկ վանդակ,այսինքն բոլոր կողմերից ազատ է,ապա իր միջից ծնվում է նոր խոտակեր
     //    let found = this.chooseCell(0);//stex petqa ases, vor zronern es pntrum
     //    //որպեսզի նրա վերևում առաջանա նոր խոտակեր
-        
+
     //     if(found.length === 8){
     //         let newy = found[1][1];
     //         let newx =found[1][0]
@@ -83,7 +83,7 @@ module.exports=class EaterBomb extends LivingCreature{
         if (cord) {
             let x = cord[0];
             let y = cord[1];
-            matrix[y][x] = 3;
+            matrix[y][x] = 5;
             matrix[this.y][this.x] = 0;
             this.x = x;
             this.y = y;

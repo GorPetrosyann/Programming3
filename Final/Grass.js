@@ -8,10 +8,11 @@ module.exports=class Grass extends LivingCreature {
     mul() {
         let empty = this.random(0);
         this.multiply++;
-        if (this.multiply > 2 && empty) {
+        // if (this.multiply > 2 && empty) {
+            if (empty){
                 let x = empty[0];
                 let y = empty[1];
-                Xot.push( new Grass(x, y)) 
+                Xot.push( new Grass(x, y))
                 matrix[y][x] = 1;
                 this.multiply = 0;
         }

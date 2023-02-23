@@ -21,7 +21,7 @@ server.listen(3000);
  const EaterBomb = require("./Final/EaterBomb")
  const GrassBoost = require("./Final/GrassBoost")
 
- 
+
 
  function generate(a,b){
    for (let i = 0; i < a; i++) {
@@ -65,7 +65,7 @@ function game(){
   for (let i = 0; i < eaterbomb.length; i++) {
     eaterbomb[i].move()
   }
-  
+
   for (let i = 0; i < grassboost.length; i++) {
     grassboost[i].energy2()
   }
