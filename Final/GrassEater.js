@@ -25,22 +25,11 @@ module.exports = class GrassEater extends LivingCreature {
     let result = Math.floor(Math.random()*found.length)
     return found[result];
 }
-   move() {
-    let cord = this.random(0);
-    if (cord) {
-        let x = cord[0];
-        let y = cord[1];
-        matrix[y][x] = 2;
-        matrix[this.y][this.x] = 0;
-        this.x = x;
-        this.y = y;
-    }
-}
 
     eat() {
         let cord = this.random(1);
         this.energy++;
-        if (this.energy > 2 && cord) {
+        if (this.energy > 8 && cord) {
             let x = cord[0];
             let y = cord[1];
             matrix[y][x] = 2;
@@ -54,20 +43,31 @@ module.exports = class GrassEater extends LivingCreature {
                 Xot.splice(i, 1);
             }
         }
-        if (this.energy == 5) {
+        }
+        if (this.multiply == 5) {
 
             this.mul()
             this.energy = 0;
-        }
-    }
-        else {
+        }else {
             this.move();
             this.energy--;
-        if (this.energy < 3) {
-            this.die();
+            if (this.energy < 3) {
+                this.die();
         }
     }
+    
 }
+    move() {
+        let cord = this.random(0);
+        if (cord) {
+            let x = cord[0];
+            let y = cord[1];
+            matrix[y][x] = 2;
+            matrix[this.y][this.x] = 0;
+            this.x = x;
+            this.y = y;
+        }
+    }
 
     mul() {
         let cord = this.random(0);
@@ -84,7 +84,7 @@ module.exports = class GrassEater extends LivingCreature {
 }
 
     die() {
-matrix[this.y][this.x] = 0;
+    matrix[this.y][this.x] = 0;
 
     for (let i = 0; i < Eater.length; i++) {
         if (this.x == Eater[i].x && this.y == Eater[i].y) {

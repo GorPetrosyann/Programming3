@@ -27,7 +27,7 @@ server.listen(3000);
    for (let i = 0; i < a; i++) {
        matrix.push([]);
        for (let j = 0; j < b; j++) {
-         matrix[i].push(Math.round(Math.random() * xx));
+         matrix[i].push(Math.round(Math.random() * 2));
        }
    }
    io.sockets.emit("send matrix", matrix)
@@ -73,7 +73,7 @@ function game(){
 
 }
 
-setInterval(game,1000)
+setInterval(game,100)
 
 
 
