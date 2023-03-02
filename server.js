@@ -73,7 +73,7 @@ function game(){
 
 }
 
-setInterval(game,100)
+setInterval(game,1000)
 
 
 

@@ -1,5 +1,4 @@
-const LivingCreature = require("./LivingCreature")
-module.exports=class Grass extends LivingCreature {
+class Grass extends LivingCreature {
     random(ch){
         let found = this.chooseCell(ch);
         let result = Math.floor(Math.random()*found.length)
@@ -8,7 +7,7 @@ module.exports=class Grass extends LivingCreature {
     mul() {
         let empty = this.random(0);
         this.multiply++;
-        if (this.multiply > 2 && empty) {
+        if (this.multiply > 3 && empty) {
                 let x = empty[0];
                 let y = empty[1];
                 Xot.push( new Grass(x, y))
