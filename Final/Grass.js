@@ -5,7 +5,7 @@ class Grass extends LivingCreature {
         return found[result];
     }
     mul() {
-        if (this.gender == "men"){
+        if (this.gender == "man"){
           let empty = this.random(0);
             this.multiply++;
             if (this.multiply == 10 && empty) {

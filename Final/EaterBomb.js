@@ -44,11 +44,16 @@ class EaterBomb extends LivingCreature{
         [this.x, this.y + 1],
         [this.x + 1, this.y + 1]
     ];
+    
+}
+chooseCell(character) {
+    this.getNewCoordinates();
+    return super.chooseCell(character);
 }
     energy1(){
         // debugger;
         //եթե found-ում առկա է 8 դատարկ վանդակ,այսինքն բոլոր կողմերից ազատ է,ապա իր միջից ծնվում է նոր խոտակեր
-       let found = this.chooseCell(2);//stex petqa ases, vor zronern es pntrum
+       let found = this.chooseCell(0);//stex petqa ases, vor zronern es pntrum
        //որպեսզի նրա վերևում առաջանա նոր խոտակեր
 
         if(found.length === 3){
@@ -68,10 +73,7 @@ class EaterBomb extends LivingCreature{
             }
         }
     }
-    chooseCell(character) {
-        this.getNewCoordinates();
-        return super.chooseCell(character);
-    }
+    
     die(){
     matrix[this.y][this.x] = 0;
 

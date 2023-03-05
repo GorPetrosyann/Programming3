@@ -14,32 +14,17 @@ function generate(a,b){
   }
 }
 
-// function generate1(){
-//   var button = document.querySelector("#myButton");
-//   button.addEventListener('click', ()=>{
-//       for (let y = 0; y < matrix.length; y+ 10) {
-//         for (let x = 0; x < matrix[y].length; x+ 10) {
-//       if(matrix[y][x] == 0){
-//         matrix[y][x] == 3;
-//         objectsCreate();
-//       }
-//     } 
-//     }
-//   })
-// }
-
-// generate1()
 
 generate(40,40);
 
 function objectsCreate() {
   for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < matrix[y].length; x++) {
-      if (matrix[y][x] == 2) {
-        Eater.push(new GrassEater(x, y));
-      }
-       else if (matrix[y][x] == 1) {
+      if (matrix[y][x] == 1) {
         Xot.push(new Grass(x, y));
+      }
+       else if (matrix[y][x] == 2) {
+        Eater.push(new GrassEater(x, y));
       }
       else if(matrix[y][x] == 3){
         eaterbomb.push(new EaterBomb(x,y));
@@ -56,14 +41,16 @@ function setup() {
   createCanvas(800,800)
   background("blue");
   frameRate(10)
+
   objectsCreate()
+
 }
 
 
 
 
 function draw(){
-
+  
     for(let y = 0;y < matrix.length;y++){
         for(let x = 0; x < matrix[y].length; x++){
           if(matrix[y][x] == 1){
@@ -84,7 +71,9 @@ function draw(){
             
         
     }
+  
     game()
+    
   }
  
  function game(){
@@ -103,3 +92,43 @@ function draw(){
  }
 
 }
+
+function generate1(){
+  var button = document.querySelector("#myButton");
+  button.addEventListener('click', ()=>{
+      for (let y = 0; y < matrix.length; y += 5) {
+        for (let x = 0; x < matrix[y].length; x += 5) {
+          if(matrix[y][x] == 0){
+            matrix[y][x] = 3;
+            for (let y = 0; y < matrix.length; y++) {
+              for (let x = 0; x < matrix[y].length; x++) {
+                if(matrix[y][x] == 3){
+                eaterbomb.push(new EaterBomb(x,y));
+                }
+              }
+            
+      }
+    } 
+    }
+  }
+  })
+
+}
+function generate2(){
+  var button = document.querySelector("#myButton2");
+  button.addEventListener('click', ()=>{
+      for (let y = 0; y < matrix.length; y += 15) {
+        for (let x = 0; x < matrix[y].length; x += 15) {
+          if(matrix[y][x] == 0){
+            matrix[y][x] = 4;
+            console.log(matrix[y][x]);
+            
+      }
+    } 
+    }
+  })
+}
+
+
+
+generate1()

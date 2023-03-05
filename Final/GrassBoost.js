@@ -4,36 +4,13 @@
         super(x,y);
         this.energy = 3;
     }
-    // newDir() {
-    //     this.directions = [
-    //         [this.x - 1, this.y - 1],
-    //         [this.x, this.y - 1],
-    //         [this.x + 1, this.y - 1],
-    //         [this.x - 1, this.y],
-    //         [this.x + 1, this.y],
-    //         [this.x - 1, this.y + 1],
-    //         [this.x, this.y + 1],
-    //         [this.x + 1, this.y + 1]
-    //     ];
-    // }
-    // getDirections(b) {
-    //     this.newDir()
-    //     let found = [];
 
-    //     for (let i = 0; i < this.directions.length; i++) {
-    //         let x = this.directions[i][0];
-    //         let y = this.directions[i][1];
-    //         if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-    //             if (matrix[y][x] == b) {
-    //                 found.push(this.directions[i]);
-    //             }
-    //         }
-    //     }
-    //     return found;
-    // }
+ chooseCell(character) {
+     return super.chooseCell(character);
+ }
     energy2(){
-        let found = this.chooseCell(1);
-
+        let found = super.chooseCell(0);
+        
         if(found.length === 2){
             let newy = found[1][1];
             let newx =found[1][0]
