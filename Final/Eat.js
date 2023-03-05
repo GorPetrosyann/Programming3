@@ -1,4 +1,4 @@
-class GrassEater extends LivingCreature {
+class Eat extends LivingCreature{
     constructor(x, y, index){
         super(x, y, index);
         this.energy = 8;
@@ -28,7 +28,7 @@ class GrassEater extends LivingCreature {
             var x = cord[0];
             var y = cord[1];
 
-            matrix[y][x] = 2;
+            matrix[y][x] = 5;
             matrix[this.y][this.x] = 0;
 
             this.x = x;
@@ -38,15 +38,15 @@ class GrassEater extends LivingCreature {
     }
 
 
-    eat() {
+    eat1() {
        
-        var cord = random( this.chooseCell(1));
+        var cord = random( this.chooseCell(2));
 
         if (cord) {
             var x = cord[0];
             var y = cord[1];
 
-            matrix[y][x] = 2;
+            matrix[y][x] = 5;
             matrix[this.y][this.x] = 0;
 
             this.x = x;
@@ -57,9 +57,9 @@ class GrassEater extends LivingCreature {
 
             this.energy++;
 
-            for (let i = 0; i < Xot.length; i++) {
-                if (x == Xot[i].x && y == Xot[i].y) {
-                    Xot.splice(i, 1);
+            for (let i = 0; i < Eater.length; i++) {
+                if (x == Eater[i].x && y == Eater[i].y) {
+                    Eater.splice(i, 1);
                 }
             }
 
@@ -90,9 +90,9 @@ class GrassEater extends LivingCreature {
             this.multiply++;
 
             
-            Eater.push(new GrassEater(x, y));
+            Eate.push(new Eat(x, y));
 
-            matrix[y][x] = 2;
+            matrix[y][x] = 6;
             this.multiply = 0;
         }
     }
@@ -100,9 +100,9 @@ class GrassEater extends LivingCreature {
 
     die() {
         matrix[this.y][this.x] = 0;
-        for (let i = 0; i < Eater.length; i++) {
-            if (this.x == Eater[i].x && this.y == Eater[i].y) {
-                Eater.splice(i, 1);
+        for (let i = 0; i < Eate.length; i++) {
+            if (this.x == Eate[i].x && this.y == Eate[i].y) {
+                Eate.splice(i, 1);
             }
         }
     }

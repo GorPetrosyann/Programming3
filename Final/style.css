@@ -1,0 +1,32 @@
+#myButton{
+    height:100px;
+    width:200px;
+    font-size: 50px;
+    background-color: aqua;
+}
+#myButton2{
+    height:100px;
+    width:200px;
+    font-size: 50px;
+    background-color: yellow; 
+}
+#myP{
+    font-size: 75px;
+}
+#a{
+    font-size: 100px;
+    color: brown;
+}
+a{
+    font-size: 80px;
+    color:blueviolet
+}
+h1{
+    font-size: 150px;
+    color:coral;
+}
+p{
+    font-size: 75px;
+    color: brown;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

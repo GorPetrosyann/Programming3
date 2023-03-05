@@ -1,4 +1,5 @@
-class GrassEater extends LivingCreature {
+
+class AllEater extends LivingCreature{
     constructor(x, y, index){
         super(x, y, index);
         this.energy = 8;
@@ -28,7 +29,7 @@ class GrassEater extends LivingCreature {
             var x = cord[0];
             var y = cord[1];
 
-            matrix[y][x] = 2;
+            matrix[y][x] = 6;
             matrix[this.y][this.x] = 0;
 
             this.x = x;
@@ -38,15 +39,17 @@ class GrassEater extends LivingCreature {
     }
 
 
-    eat() {
+    eat2() {
        
         var cord = random( this.chooseCell(1));
+        var cord1 = random(this.chooseCell(2));
+        var cord2 = random(this.chooseCell(5))
 
         if (cord) {
             var x = cord[0];
             var y = cord[1];
 
-            matrix[y][x] = 2;
+            matrix[y][x] = 6;
             matrix[this.y][this.x] = 0;
 
             this.x = x;
@@ -69,7 +72,58 @@ class GrassEater extends LivingCreature {
             }
 
 
-        } else {
+        }else if(cord1){
+            var x = cord1[0];
+            var y = cord1[1];
+
+            matrix[y][x] = 6;
+            matrix[this.y][this.x] = 0;
+
+            this.x = x;
+            this.y = y;
+
+
+            this.multiply++;
+
+            this.energy++;
+
+            for (let i = 0; i < Eater.length; i++) {
+                if (x == Eater[i].x && y == Eater[i].y) {
+                    Eater.splice(i, 1);
+                }
+            }
+
+            if (this.multiply == 10) {
+                this.mul()
+                this.multiply = 0;
+            }
+        } else if (cord2){
+            var x = cord2[0];
+            var y = cord2[1];
+
+            matrix[y][x] = 6;
+            matrix[this.y][this.x] = 0;
+
+            this.x = x;
+            this.y = y;
+
+
+            this.multiply++;
+
+            this.energy++;
+
+            for (let i = 0; i < Eate.length; i++) {
+                if (x == Eate[i].x && y == Eate[i].y) {
+                    Eate.splice(i, 1);
+                }
+            }
+
+            if (this.multiply == 10) {
+                this.mul()
+                this.multiply = 0;
+            }
+        }
+        else {
             this.move();
             this.energy--;
             if (this.energy < 3) { 
@@ -90,9 +144,9 @@ class GrassEater extends LivingCreature {
             this.multiply++;
 
             
-            Eater.push(new GrassEater(x, y));
+            AllEatere.push(new AllEater(x, y));
 
-            matrix[y][x] = 2;
+            matrix[y][x] = 6;
             this.multiply = 0;
         }
     }
@@ -100,9 +154,9 @@ class GrassEater extends LivingCreature {
 
     die() {
         matrix[this.y][this.x] = 0;
-        for (let i = 0; i < Eater.length; i++) {
-            if (this.x == Eater[i].x && this.y == Eater[i].y) {
-                Eater.splice(i, 1);
+        for (let i = 0; i < AllEatere.length; i++) {
+            if (this.x == AllEatere[i].x && this.y == AllEatere[i].y) {
+                AllEatere.splice(i, 1);
             }
         }
     }

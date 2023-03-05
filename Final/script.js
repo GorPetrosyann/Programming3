@@ -1,18 +1,19 @@
-import { Socket } from "socket.io";
-
 let side = 25;
 var Xot = [];
 var Eater = [];
 var eaterbomb = [];
 var grassboost = [];
+var Eate = [];
+var AllEatere = [];
 var matrix = [];
 var socket = io();
+
 
 function generate(a,b){
   for (let i = 0; i < a; i++) {
       matrix.push([]);
       for (let j = 0; j < b; j++) {
-        matrix[i].push(Math.round(Math.random() * 4));  
+        matrix[i].push(Math.round(Math.random() * 6));  
       }
   }
 }
@@ -20,8 +21,20 @@ function generate(a,b){
 
 generate(40,40);
 
-
-
+function frame1(){
+  var button = document.querySelector("#myButton");
+  button.addEventListener('click', ()=>{
+     frameRate(3)
+     document.getElementById("myP").innerHTML = "Ներկայիս եղանակը ՝ Ձմեռ";   
+  })
+}
+function frame2(){
+  var button = document.querySelector("#myButton2");
+  button.addEventListener('click', ()=>{
+     frameRate(10)
+     document.getElementById("myP").innerHTML = "Ներկայիս եղանակը ՝ Ամառ";   
+  })
+}
 
 function objectsCreate() {
   for (let y = 0; y < matrix.length; y++) {
@@ -37,6 +50,10 @@ function objectsCreate() {
       }
       else if(matrix[y][x] == 4){
         grassboost.push(new GrassBoost(x,y));
+      }else if(matrix[y][x] == 5){
+        Eate.push(new Eat(x,y))
+      }else if(matrix[y][x] == 6){
+        AllEatere.push(new AllEater(x,y))
       }
     }
   }
@@ -46,8 +63,9 @@ function objectsCreate() {
 function setup() {
   createCanvas(800,800)
   background("blue");
-  frameRate(10)
-
+  frameRate(1)
+  frame1()
+  frame2()
   objectsCreate()
 
 }
@@ -56,15 +74,15 @@ function setup() {
 
 
 function draw(){
-  if(frameCount / 10 == 0){
+  if(frameCount % 10 == 0) {
     var status = {
-      "frame Count": Math.round(frameCount/60),
+      "frameCount": Math.round(frameCount/60),
       "Grass": Xot.length,
       "Eater": Eater.length,
       "GrassBoost": grassboost.length,
       "EaterBomb": eaterbomb.length,
-    }
-    socket.emit('send status', status)
+    } 
+    socket.emit('send status', status);
   }
     for(let y = 0;y < matrix.length;y++){
         for(let x = 0; x < matrix[y].length; x++){
@@ -80,13 +98,16 @@ function draw(){
               fill ("blue")
             }else if(matrix[y][x] == 4){
               fill("purple")
+            }else if(matrix[y][x] == 5){
+              fill("red")
+            }else if(matrix[y][x] == 6){
+              fill("black")
             }
             rect(x * side,y * side, side, side);
         }
             
         
     }
-  
     game()
     
   }
@@ -105,7 +126,12 @@ function draw(){
  for (let i = 0; i < grassboost.length; i++) {
    grassboost[i].energy2()
  }
-
+ for (let i = 0; i < Eate.length; i++) {
+  Eate[i].eat1()
+}
+for (let i = 0; i < AllEatere.length; i++) {
+  AllEatere[i].eat2()
+}
 }
 
 function generate1(){
@@ -122,19 +148,5 @@ function generate1(){
   })
 
 }
-// function generate2(){
-//   var button = document.querySelector("#myButton2");
-//   button.addEventListener('click', ()=>{
-//       for (let y = 0; y < matrix.length; y += 15) {
-//         for (let x = 0; x < matrix[y].length; x += 15) {
-//           if(matrix[y][x] == 0){
-//             matrix[y][x] = 4;
-//             console.log(matrix[y][x]);
-            
-//       }
-//     } 
-//     }
-//   })
-// }
 
 
