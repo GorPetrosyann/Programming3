@@ -40,7 +40,7 @@
             this.energy ++;
 
                 for(let i = 0;i < 1; i++){
-                    matrix[newy][newx] = 4
+                    matrix[newy][newx] = 1
                     Xot.push(new Grass(newx,newy))
                 }
         }else{

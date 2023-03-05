@@ -14,6 +14,7 @@ class LivingCreature {
            [this.x, this.y + 1],
            [this.x + 1, this.y + 1]
        ];
+       this.gender = Math.random() < 0.5 ? "man" : "woman";
  
     }
     chooseCell(ch) {

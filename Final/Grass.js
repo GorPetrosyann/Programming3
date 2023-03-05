@@ -5,15 +5,29 @@ class Grass extends LivingCreature {
         return found[result];
     }
     mul() {
-        let empty = this.random(0);
-        this.multiply++;
-        if (this.multiply > 3 && empty) {
-                let x = empty[0];
-                let y = empty[1];
-                Xot.push( new Grass(x, y))
-                matrix[y][x] = 1;
-                this.multiply = 0;
+        if (this.gender == "men"){
+          let empty = this.random(0);
+            this.multiply++;
+            if (this.multiply == 10 && empty) {
+                    let x = empty[0];
+                    let y = empty[1];
+                    Xot.push( new Grass(x, y))
+                    matrix[y][x] = 1;
+                    this.multiply = 0;
+        }  
+        
+        }else{
+            let empty = this.random(0);
+            this.multiply++;
+            if (this.multiply == 2 && empty) {
+                    let x = empty[0];
+                    let y = empty[1];
+                    Xot.push( new Grass(x, y))
+                    matrix[y][x] = 1;
+                    this.multiply = 0;
         }
+        }
+        
     }
 
 

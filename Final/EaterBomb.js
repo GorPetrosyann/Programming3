@@ -2,7 +2,7 @@
 class EaterBomb extends LivingCreature{
     constructor(x,y){
         super(x,y);
-        this.energy = 5;
+        this.energy = 2;
 
     }
     // newDir() {
@@ -45,48 +45,32 @@ class EaterBomb extends LivingCreature{
         [this.x + 1, this.y + 1]
     ];
 }
-    // energy1(){
-    //     // debugger;
-    //     //եթե found-ում առկա է 8 դատարկ վանդակ,այսինքն բոլոր կողմերից ազատ է,ապա իր միջից ծնվում է նոր խոտակեր
-    //    let found = this.chooseCell(0);//stex petqa ases, vor zronern es pntrum
-    //    //որպեսզի նրա վերևում առաջանա նոր խոտակեր
+    energy1(){
+        // debugger;
+        //եթե found-ում առկա է 8 դատարկ վանդակ,այսինքն բոլոր կողմերից ազատ է,ապա իր միջից ծնվում է նոր խոտակեր
+       let found = this.chooseCell(2);//stex petqa ases, vor zronern es pntrum
+       //որպեսզի նրա վերևում առաջանա նոր խոտակեր
 
-    //     if(found.length === 8){
-    //         let newy = found[1][1];
-    //         let newx =found[1][0]
-    //         this.energy ++;
-    //         // if(this.energy === 2){
-    //             for(let i = 0;i < 1; i++){
-    //                 matrix[newy][newx] = 3
-    //                 Eater.push(new GrassEater(newx,newy))
-    //             }
-    //         // }
-    //     }else{//հակառակ դեպքում էներգիան պակասում է և մահանում է
-    //         this.energy--;
-    //         if (this.energy === 0){
-    //             this.die()
-    //         }
-    //     }
-    // }
+        if(found.length === 3){
+            let newy = found[1][1];
+            let newx =found[1][0]
+            this.energy ++;
+            if(this.energy === 5){
+                for(let i = 0;i < 1; i++){
+                    matrix[newy][newx] = 2
+                    Eater.push(new GrassEater(newx,newy))
+                }
+            }
+        }else{//հակառակ դեպքում էներգիան պակասում է և մահանում է
+            this.energy--;
+            if (this.energy === 0){
+                this.die()
+            }
+        }
+    }
     chooseCell(character) {
         this.getNewCoordinates();
         return super.chooseCell(character);
-    }
-    random(ch){
-     let found = this.chooseCell(ch);
-     let result = Math.floor(Math.random()*found.length)
-     return found[result];
- }
-    move() {
-        let cord = this.random(0);
-        if (cord) {
-            let x = cord[0];
-            let y = cord[1];
-            matrix[y][x] = 5;
-            matrix[this.y][this.x] = 0;
-            this.x = x;
-            this.y = y;
-        }
     }
     die(){
     matrix[this.y][this.x] = 0;
