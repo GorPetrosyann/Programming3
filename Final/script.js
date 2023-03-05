@@ -1,21 +1,27 @@
+import { Socket } from "socket.io";
+
 let side = 25;
 var Xot = [];
 var Eater = [];
 var eaterbomb = [];
 var grassboost = [];
 var matrix = [];
+var socket = io();
 
 function generate(a,b){
   for (let i = 0; i < a; i++) {
       matrix.push([]);
       for (let j = 0; j < b; j++) {
-        matrix[i].push(Math.round(Math.random() * 2));  
+        matrix[i].push(Math.round(Math.random() * 4));  
       }
   }
 }
 
 
 generate(40,40);
+
+
+
 
 function objectsCreate() {
   for (let y = 0; y < matrix.length; y++) {
@@ -50,7 +56,16 @@ function setup() {
 
 
 function draw(){
-  
+  if(frameCount / 10 == 0){
+    var status = {
+      "frame Count": Math.round(frameCount/60),
+      "Grass": Xot.length,
+      "Eater": Eater.length,
+      "GrassBoost": grassboost.length,
+      "EaterBomb": eaterbomb.length,
+    }
+    socket.emit('send status', status)
+  }
     for(let y = 0;y < matrix.length;y++){
         for(let x = 0; x < matrix[y].length; x++){
           if(matrix[y][x] == 1){
@@ -100,35 +115,26 @@ function generate1(){
         for (let x = 0; x < matrix[y].length; x += 5) {
           if(matrix[y][x] == 0){
             matrix[y][x] = 3;
-            for (let y = 0; y < matrix.length; y++) {
-              for (let x = 0; x < matrix[y].length; x++) {
-                if(matrix[y][x] == 3){
-                eaterbomb.push(new EaterBomb(x,y));
-                }
-              }
-            
-      }
+            eaterbomb.push(new EaterBomb(x,y));
     } 
     }
   }
   })
 
 }
-function generate2(){
-  var button = document.querySelector("#myButton2");
-  button.addEventListener('click', ()=>{
-      for (let y = 0; y < matrix.length; y += 15) {
-        for (let x = 0; x < matrix[y].length; x += 15) {
-          if(matrix[y][x] == 0){
-            matrix[y][x] = 4;
-            console.log(matrix[y][x]);
+// function generate2(){
+//   var button = document.querySelector("#myButton2");
+//   button.addEventListener('click', ()=>{
+//       for (let y = 0; y < matrix.length; y += 15) {
+//         for (let x = 0; x < matrix[y].length; x += 15) {
+//           if(matrix[y][x] == 0){
+//             matrix[y][x] = 4;
+//             console.log(matrix[y][x]);
             
-      }
-    } 
-    }
-  })
-}
+//       }
+//     } 
+//     }
+//   })
+// }
 
 
-
-generate1()
