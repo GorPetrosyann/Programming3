@@ -16,7 +16,6 @@ app.get('/', function (req, res) {
  
 io.on('connection', (socket) => {
    socket.on('send status',function (status){
-      console.log(status);
      fs.appendFileSync("file.json", JSON.stringify(status))
    });
  });

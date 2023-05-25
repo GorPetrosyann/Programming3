@@ -2,7 +2,7 @@
 class EaterBomb extends LivingCreature{
     constructor(x,y){
         super(x,y);
-        this.energy = 2;
+        this.energy = 4;
 
     }
 
@@ -25,7 +25,6 @@ chooseCell(character) {
 }
     energy1(){
         let found = this.chooseCell(0);
-
         if(found.length === 3){
             let newy = found[1][1];
             let newx =found[1][0]
@@ -34,9 +33,12 @@ chooseCell(character) {
                 for(let i = 0;i < 1; i++){
                     matrix[newy][newx] = 2
                     Eater.push(new GrassEater(newx,newy))
+                    this.energy = 3
+                    console.log(GrassEater);
                 }
             }
-        }else{
+        }
+        else{
             this.energy--;
             if (this.energy === 0){
                 this.die()

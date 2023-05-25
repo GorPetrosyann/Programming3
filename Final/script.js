@@ -19,7 +19,7 @@ function generate(a,b){
 }
 
 
-generate(40,40);
+generate(25,25);
 
 function frame1(){
   var button = document.querySelector("#myButton");
@@ -61,9 +61,9 @@ function objectsCreate() {
 
 
 function setup() {
-  createCanvas(800,800)
+  createCanvas(600,600)
   background("blue");
-  frameRate(1)
+  frameRate(5)
   frame1()
   frame2()
   objectsCreate()
@@ -81,6 +81,8 @@ function draw(){
       "Eater": Eater.length,
       "GrassBoost": grassboost.length,
       "EaterBomb": eaterbomb.length,
+      "Eat":Eate.length,
+      "AllEater":AllEatere.length,
     } 
     socket.emit('send status', status);
   }

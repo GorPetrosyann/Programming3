@@ -4,29 +4,45 @@
         super(x,y);
         this.energy = 3;
     }
-
- chooseCell(character) {
-     return super.chooseCell(character);
+    getNewCoordinates() {
+        this.directions = [
+         [this.x - 1, this.y - 1],
+         [this.x, this.y - 1],
+         [this.x + 1, this.y - 1],
+         [this.x - 1, this.y],
+         [this.x + 1, this.y],
+         [this.x - 1, this.y + 1],
+         [this.x, this.y + 1],
+         [this.x + 1, this.y + 1]
+     ];
+     
  }
-    energy2(){
-        let found = super.chooseCell(0);
-        
-        if(found.length === 2){
-            let newy = found[1][1];
-            let newx =found[1][0]
-            this.energy ++;
-
-                for(let i = 0;i < 1; i++){
-                    matrix[newy][newx] = 1
-                    Xot.push(new Grass(newx,newy))
+    chooseCell(character) {
+        this.getNewCoordinates();
+        return super.chooseCell(character);
+    }
+        energy2(){
+            let found = this.chooseCell(0);
+            if(found.length === 3){
+                let newy = found[1][1];
+                let newx =found[1][0]
+                this.energy ++;
+                if(this.energy === 5){
+                    for(let i = 0;i < 1; i++){
+                        matrix[newy][newx] = 1
+                        Xot.push(new Grass(newx,newy))
+                        this.energy = 3
+                    }
                 }
-        }else{
-            this.energy--;
-            if (this.energy === 0){
-                this.die()
+            }
+            else{
+                this.energy--;
+                if (this.energy === 0){
+                    this.die()
+                }
             }
         }
-    }
+        
     die(){
         matrix[this.y][this.x] = 0;
 

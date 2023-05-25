@@ -69,7 +69,8 @@ class GrassEater extends LivingCreature {
             }
 
 
-        } else {
+        } 
+        else {
             this.move();
             this.energy--;
             if (this.energy < 3) { 

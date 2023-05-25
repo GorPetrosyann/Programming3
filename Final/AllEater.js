@@ -2,7 +2,7 @@
 class AllEater extends LivingCreature{
     constructor(x, y, index){
         super(x, y, index);
-        this.energy = 8;
+        this.energy = 5;
     }
    getNewCoordinates() {
        this.directions = [
@@ -126,7 +126,7 @@ class AllEater extends LivingCreature{
         else {
             this.move();
             this.energy--;
-            if (this.energy < 3) { 
+            if (this.energy === 3) { 
                 this.die();
             }
         }
