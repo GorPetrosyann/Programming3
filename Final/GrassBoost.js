@@ -40,7 +40,7 @@ class GrassBoost{
             let newy = found[1][1];
             let newx =found[1][0]
             this.energy ++;
-            if(this.energy >= 9){
+            if(this.energy >= 8){
                 for(let i = 0;i < 1; i++){
                     matrix[newy][newx] = 1
                     Xot.push(new Grass(newx,newy))

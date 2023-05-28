@@ -8,23 +8,22 @@ var AllEatere = [];
 var matrix = [];
 var socket = io();
 
-
 function generate(a,b){
   for (let i = 0; i < a; i++) {
       matrix.push([]);
       for (let j = 0; j < b; j++) {
-        matrix[i].push(Math.round(Math.random() * 4));  
+        matrix[i].push(Math.round(Math.random() * 6));  
       }
   }
 }
 
 
-generate(25,25);
+generate(15,15);
 
 function frame1(){
   var button = document.querySelector("#myButton");
   button.addEventListener('click', ()=>{
-     frameRate(0.2)
+     frameRate(2)
      document.getElementById("myP").innerHTML = "Ներկայիս եղանակը ՝ Ձմեռ";   
   })
 }
@@ -61,9 +60,9 @@ function objectsCreate() {
 
 
 function setup() {
-  createCanvas(600,600)
+  createCanvas(380,380)
   background("blue");
-  frameRate(5)
+  frameRate(1)
   frame1()
   frame2()
   objectsCreate()
@@ -74,9 +73,9 @@ function setup() {
 
 
 function draw(){
-  if(frameCount % 10 == 0) {
+  if(frameCount % 1 == 0) {
     var status = {
-      "frameCount": Math.round(frameCount/60),
+      "frameCount": Math.round(frameCount/10),
       "Grass": Xot.length,
       "Eater": Eater.length,
       "GrassBoost": grassboost.length,
@@ -86,6 +85,9 @@ function draw(){
     } 
     socket.emit('send status', status);
   }
+  myJSON = JSON.stringify(status)
+  document.getElementById("demo").innerHTML = myJSON;
+  
     for(let y = 0;y < matrix.length;y++){
         for(let x = 0; x < matrix[y].length; x++){
           if(matrix[y][x] == 1){
@@ -108,8 +110,9 @@ function draw(){
             rect(x * side,y * side, side, side);
         }
             
-        
+    
     }
+
     game()
     
   }

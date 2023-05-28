@@ -11,15 +11,12 @@ app.get('/', function (req, res) {
    res.redirect('index.html');
 });
 
-
-
  
 io.on('connection', (socket) => {
    socket.on('send status',function (status){
-     fs.appendFileSync("file.json", JSON.stringify(status))
+     fs.writeFileSync("statistic.json", JSON.stringify(status))
    });
  });
-
 
 
 server.listen(3000);
