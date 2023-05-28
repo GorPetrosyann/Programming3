@@ -13,7 +13,7 @@ function generate(a,b){
   for (let i = 0; i < a; i++) {
       matrix.push([]);
       for (let j = 0; j < b; j++) {
-        matrix[i].push(Math.round(Math.random() * 6));  
+        matrix[i].push(Math.round(Math.random() * 4));  
       }
   }
 }
@@ -24,7 +24,7 @@ generate(25,25);
 function frame1(){
   var button = document.querySelector("#myButton");
   button.addEventListener('click', ()=>{
-     frameRate(3)
+     frameRate(0.2)
      document.getElementById("myP").innerHTML = "Ներկայիս եղանակը ՝ Ձմեռ";   
   })
 }
@@ -134,21 +134,6 @@ function draw(){
 for (let i = 0; i < AllEatere.length; i++) {
   AllEatere[i].eat2()
 }
-}
-
-function generate1(){
-  var button = document.querySelector("#myButton");
-  button.addEventListener('click', ()=>{
-      for (let y = 0; y < matrix.length; y += 5) {
-        for (let x = 0; x < matrix[y].length; x += 5) {
-          if(matrix[y][x] == 0){
-            matrix[y][x] = 3;
-            eaterbomb.push(new EaterBomb(x,y));
-    } 
-    }
-  }
-  })
-
 }
 
 
